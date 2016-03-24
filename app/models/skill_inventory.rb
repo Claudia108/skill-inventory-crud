@@ -1,5 +1,4 @@
 require 'yaml/store'
-require_relative 'skill'
 
 class SkillInventory
   attr_reader :database
@@ -47,9 +46,16 @@ class SkillInventory
     end
   end
 
-  def delete(id)
+  def destroy(id)
     database.transaction do
       database['skills'].delete_if { |skill| skill['id'] == id }
+    end
+  end
+
+  def delete_all
+    database.transaction do
+      database['skills'] = []
+      database['total'] = 0
     end
   end
 end
