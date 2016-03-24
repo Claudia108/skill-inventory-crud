@@ -15,7 +15,7 @@ module TestHelpers
   end
 
   def skill_inventory
-    database = YAML::Store.new('db/skill_inventory_test')
+    database = Sequel.sqlite('db/skill_inventory_test.sqlite')
     @skill_inventory ||= SkillInventory.new(database)
   end
 

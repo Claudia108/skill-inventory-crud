@@ -4,9 +4,9 @@ class SkillTest < Minitest::Test
 
   def test_assigns_attributes_correctly
     skill = Skill.new({
-      "name" => "Testing",
-      "status" => "Good at",
-      "id" => 1
+      :name   => "Testing",
+      :status => "Good at",
+      :id     => 1
       })
 
       assert_equal "Testing", skill.name

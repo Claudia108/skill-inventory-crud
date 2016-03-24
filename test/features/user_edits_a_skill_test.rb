@@ -17,13 +17,15 @@ class UserEditsASkillTest < Minitest::Test
     visit "/skills"
     click_link("edit")
 
-    assert_equal "/skills/1/edit", current_path
+    id = skill_inventory.all.last.id
+
+    assert_equal "/skills/#{id}/edit", current_path
 
     fill_in "skill[name]", with: "Fun"
     fill_in "skill[status]", with: "Sleeping, dancing, reading"
     click_button("update")
 
-    assert_equal "/skills/1", current_path
+    assert_equal "/skills/#{id}", current_path
 
     within("h1") do
       assert page.has_content?("Fun")
