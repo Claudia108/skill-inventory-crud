@@ -17,7 +17,7 @@ class UserDeletesASkillTest < Minitest::Test
       end
 
       click_button("delete")
-      
+
       assert_equal "/skills", current_path
       refute page.has_content?("Capybara")
   end
